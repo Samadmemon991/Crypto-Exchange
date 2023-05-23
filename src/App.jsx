@@ -1,19 +1,21 @@
-// import logo from './logo.svg';
 import './App.css';
 import 'bootstrap';
 import Header from './components/Layout/Header';
 import "bootstrap/dist/css/bootstrap.min.css"
 import Footer from './components/Layout/Footer';
 import SignUp from './components/Forms/SignUp';
+import SignIn from './components/Forms/SignIn';
 
 
 function App() {
   return (
-    <>
+    < div className="App">
       <Header />
-<SignUp/>
+      <SignIn />
+      {/* <SignUp /> */}
       <Footer />
-    </>
+
+    </div>
   );
 }
 
