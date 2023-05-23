@@ -1,10 +1,23 @@
 import { Button, Form, Stack } from "react-bootstrap";
 import Card from "../Layout/Card";
 
-export default function SignUp() {
+export default function SignUp(props) {
+
+const submitHandler =(e)=>{
+e.preventDefault();
+  const userData = {
+    name: e.target.name.value,
+    email: e.target.email.value,
+    password: e.target.password.value,
+    failedAttempts: 0
+  }
+props.registerUser(userData)
+}
+
+
   return (
     <Card title={"Register"}>
-      <Form >
+      <Form onSubmit={submitHandler}>
         <Stack gap={2}>
           <Form.Group controlId="name">
             <Form.Label>Name</Form.Label>
@@ -24,7 +37,7 @@ export default function SignUp() {
           </Form.Group>
           <Form.Group controlId="cnic">
             <Form.Label>CNIC</Form.Label>
-            <Form.Control type='file' accept='.doc,.docx,application/pdf' required />
+            <Form.Control type='file' accept='application/pdf' required />
           </Form.Group>
           <Button className="mt-2" type="submit" variant="dark">Sign up</Button>
         </Stack>
