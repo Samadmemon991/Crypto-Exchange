@@ -26,10 +26,7 @@ function App() {
     setSignIn(true);
     setSignUp(false);
   }
-  const getUserSignUp = () => {
-    setSignIn(false);
-    setSignUp(true);
-  }
+
   const registerUser = (userData) => {
     setUsers((prevUsers) => {
       return [...prevUsers, userData]
@@ -53,8 +50,8 @@ function App() {
   return (
     < div className="App">
       <Header />
-      {signIn && <SignIn users={users} failedAttempt={failedAttempt} />}
-      {signUp && <SignUp registerUser={registerUser} />}
+      {!signIn && <SignIn users={users} failedAttempt={failedAttempt} />}
+      {!signUp && <SignUp registerUser={registerUser} />}
       <Footer />
 
     </div>

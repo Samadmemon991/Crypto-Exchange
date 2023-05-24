@@ -1,12 +1,11 @@
 import { Button, FloatingLabel, Form, Stack } from "react-bootstrap";
 import Card from "../Layout/Card";
 import { useState } from "react";
+import PromptCard from "../Layout/PromptCard";
 
 export default function SignIn(props) {
 
-  const [successMsg, setSuccessMsg] = useState(false);
-  const [errorMsg, setErrorMsg] = useState(false);
-  const [blockMsg, setBlockMsg] = useState(false);
+  const [msg, setMsg] = useState();
 
   const validate = (e) => {
     e.preventDefault();
@@ -14,55 +13,54 @@ export default function SignIn(props) {
       return user.email === e.target.email.value;
     })[0]
 
-    if (user === null) {
-      failLogin();
+    if (user == null) {
+      setMsgPrompt("fail");
     } else if (user.failedAttempts >= 3) {
-      blockedUser(user.name)
+      setMsgPrompt("block", user.name);
     } else if (user.password === e.target.password.value) {
-      successLogin()
+      setMsgPrompt("success");
     } else {
       user.failedAttempts++;
       props.failedAttempt(user)
+      setMsgPrompt("fail");
     }
   }
 
-  const successLogin = () => {
-    console.log("success")
+
+  const setMsgPrompt = (msgType, user = null) => {
+    if (msgType === "success") {
+      setMsg(<PromptCard class={"primary"} body={"User successfully logged in."} />)
+    } else if (msgType === "fail") {
+      setMsg(<PromptCard class={"secondary"} body={"Invalid credentials."} />)
+    } else {
+      setMsg(<PromptCard class={"danger"} body={user + " has been block due to too many invalid attempts."} />)
+    }
   }
-
-  const failLogin = () => {
-    console.log("fail")
-
-  }
-
-  const blockedUser = (name) => {
-    console.log(name + " user blocked")
-
-  }
-
-
 
   return (
-    <Card title={"Welcome back!"}>
-      <Form className="text-dark" onSubmit={validate}>
-        <Stack>
-          <Form.Group>
-            <FloatingLabel
-              controlId="email"
-              label="Email address"
-              className="mb-3"
-            >
-              <Form.Control type="email" placeholder="name@example.com" />
-            </FloatingLabel>
-          </Form.Group>
-          <Form.Group>
-            <FloatingLabel controlId="password" label="Password">
-              <Form.Control type="password" placeholder="Password" />
-            </FloatingLabel>
-          </Form.Group>
-          <Button className="mt-2" type="submit" variant="dark">Sign in</Button>
-        </Stack>
-      </Form>
-    </Card>
+    <>
+      <Card title={"Welcome back!"}>
+        <Form className="text-dark" onSubmit={validate}>
+          <Stack>
+            <Form.Group>
+              <FloatingLabel
+                controlId="email"
+                label="Email address"
+                className="mb-3"
+              >
+                <Form.Control type="email" placeholder="name@example.com" />
+              </FloatingLabel>
+            </Form.Group>
+            <Form.Group>
+              <FloatingLabel controlId="password" label="Password">
+                <Form.Control type="password" placeholder="Password" />
+              </FloatingLabel>
+            </Form.Group>
+            <Button className="mt-2" type="submit" variant="dark">Sign in</Button>
+          </Stack>
+        </Form>
+      </Card>
+      {msg}
+    </>
   );
 }
