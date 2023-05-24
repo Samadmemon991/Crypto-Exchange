@@ -30,6 +30,7 @@ export default function SignIn(props) {
   const setMsgPrompt = (msgType, user = null) => {
     if (msgType === "success") {
       setMsg(<PromptCard class={"primary"} body={"User successfully logged in."} />)
+      setTimeout(()=>{props.setUserLoginFlag(true)},1500)
     } else if (msgType === "fail") {
       setMsg(<PromptCard class={"secondary"} body={"Invalid credentials."} />)
     } else {
