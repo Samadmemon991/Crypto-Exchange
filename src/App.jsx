@@ -20,6 +20,7 @@ function App() {
   );
   const [signIn, setSignIn] = useState(false);
   const [signUp, setSignUp] = useState(true);
+  const [userLoginFlag, setUserLoginFlag] = useState(false);
 
 
   const getUserSignIn = () => {
@@ -49,9 +50,9 @@ function App() {
 
   return (
     < div className="App">
-      <Header />
-      {!signIn && <SignIn users={users} failedAttempt={failedAttempt} />}
-      {!signUp && <SignUp registerUser={registerUser} />}
+      <Header isUserLoggedIn={userLoginFlag}/>
+      {!userLoginFlag && signIn && <SignIn users={users} failedAttempt={failedAttempt} setUserLoginFlag={setUserLoginFlag}/>}
+      {!userLoginFlag && signUp && <SignUp registerUser={registerUser} />}
       <Footer />
 
     </div>
