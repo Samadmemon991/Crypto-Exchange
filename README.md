@@ -12,6 +12,8 @@ You may also see any lint errors in the console.
 
 ## Sign up page
 ![Sign up page](/media/Screenshot%20(343).png "Sign up page")
+## Sign up page validations
+![Sign up page validations](/media/Screenshot%20(351).png "Sign up page validations")
 ## Sign in page
 ![Sign in page](/media/Screenshot%20(344).png "Sign in page")
 ## User page
