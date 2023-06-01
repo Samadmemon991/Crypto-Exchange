@@ -22,3 +22,14 @@ You may also see any lint errors in the console.
 ![Success prompt](/media/Screenshot%20(345).png "Success prompt")
 ![Invalid credentials prompt](/media/Screenshot%20(347).png "Invalid credentials prompt")
 ![User blocked prompt](/media/Screenshot%20(348).png "User blocked prompt")
+
+## Blogs page
+![Blogs](/media/Screenshot%20(370).png "Blogs")
+
+### CRUD operations
+![View blog](/media/Screenshot%20(371).png "View blog")
+![Edit blog](/media/Screenshot%20(372).png "Edit blog")
+![Delete blog](/media/Screenshot%20(373).png "Delete blog")
+![Create blog](/media/Screenshot%20(374).png "Create blog")
+![Create blog](/media/Screenshot%20(375).png "Create blog")
+
