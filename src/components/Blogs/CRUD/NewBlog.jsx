@@ -47,16 +47,6 @@ export default function NewBlog(props) {
       >
         <Fade in={props.show}>
           <Box sx={style}>
-            {/* <Typography id="transition-modal-title" variant="h4" component="h2">
-              {props.blogInfo.title}
-            </Typography>
-            <Typography id="transition-modal-subtitle" variant="subtitle2" gutterBottom sx={{ fontWeight: "700" }}>
-              {props.blogInfo.subtitle}
-            </Typography>
-            <Typography id="transition-modal-description" sx={{ mt: 2 }}>
-              <p>Author: {props.blogInfo.author}</p>
-              <p>ID: {props.blogInfo.id}</p>
-            </Typography> */}
 
             <form onSubmit={submitHandler}>
               <TextField
@@ -87,9 +77,7 @@ export default function NewBlog(props) {
               <Button sx={{ color: 'black' }} type="submit">Add new Blog</Button>
             </form>
           </Box>
-
         </Fade>
-
       </Modal>
     </>
   );
