@@ -7,10 +7,12 @@ import SignUp from './components/Forms/SignUp';
 import SignIn from './components/Forms/SignIn';
 import { useState } from 'react';
 import Blogs from './components/Blogs/Blogs';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 
 
 function App() {
 
+  const navigate = useNavigate();
   const [users, setUsers] = useState(
     [{
       name: "Abdul Samad",
@@ -19,21 +21,17 @@ function App() {
       failedAttempts: 0
     }]
   );
-  const [signIn, setSignIn] = useState(false);
-  const [signUp, setSignUp] = useState(true);
+
   const [userLoginFlag, setUserLoginFlag] = useState(false);
 
 
-  const getUserSignIn = () => {
-    setSignIn(true);
-    setSignUp(false);
-  }
+
 
   const registerUser = (userData) => {
     setUsers((prevUsers) => {
       return [...prevUsers, userData]
-    })
-    getUserSignIn();
+    });
+    navigate('sign-in');
   }
 
 
@@ -51,9 +49,13 @@ function App() {
   return (
     < div className="App">
       <Header isUserLoggedIn={userLoginFlag} />
-      <Blogs />
-      {/* {!userLoginFlag && signIn && <SignIn users={users} failedAttempt={failedAttempt} setUserLoginFlag={setUserLoginFlag}/>}
-      {!userLoginFlag && signUp && <SignUp registerUser={registerUser} />} */}
+      <Routes>
+        <Route path='blogs' element={<Blogs />} />
+        <Route path='/' element={<SignUp registerUser={registerUser} />} />
+        <Route path='sign-in' element={
+          <SignIn users={users} failedAttempt={failedAttempt} setUserLoginFlag={setUserLoginFlag} />
+        } />
+      </Routes>
       <Footer />
 
     </div>

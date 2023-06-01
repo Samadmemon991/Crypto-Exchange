@@ -2,8 +2,10 @@ import { Button, FloatingLabel, Form, Stack } from "react-bootstrap";
 import Card from "../Layout/Card";
 import { useState } from "react";
 import PromptCard from "../Layout/PromptCard";
+import { useNavigate } from "react-router";
 
 export default function SignIn(props) {
+  const navigate = useNavigate();
 
   const [msg, setMsg] = useState();
 
@@ -30,7 +32,9 @@ export default function SignIn(props) {
   const setMsgPrompt = (msgType, user = null) => {
     if (msgType === "success") {
       setMsg(<PromptCard class={"primary"} body={"User successfully logged in."} />)
-      setTimeout(()=>{props.setUserLoginFlag(true)},1500)
+      setTimeout(()=>{props.setUserLoginFlag(true)},1500);
+      navigate('/blogs');
+
     } else if (msgType === "fail") {
       setMsg(<PromptCard class={"secondary"} body={"Invalid credentials."} />)
     } else {
