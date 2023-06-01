@@ -6,6 +6,7 @@ import Footer from './components/Layout/Footer';
 import SignUp from './components/Forms/SignUp';
 import SignIn from './components/Forms/SignIn';
 import { useState } from 'react';
+import Blogs from './components/Blogs/Blogs';
 
 
 function App() {
@@ -49,9 +50,10 @@ function App() {
 
   return (
     < div className="App">
-      <Header isUserLoggedIn={userLoginFlag}/>
-      {!userLoginFlag && signIn && <SignIn users={users} failedAttempt={failedAttempt} setUserLoginFlag={setUserLoginFlag}/>}
-      {!userLoginFlag && signUp && <SignUp registerUser={registerUser} />}
+      <Header isUserLoggedIn={userLoginFlag} />
+      <Blogs />
+      {/* {!userLoginFlag && signIn && <SignIn users={users} failedAttempt={failedAttempt} setUserLoginFlag={setUserLoginFlag}/>}
+      {!userLoginFlag && signUp && <SignUp registerUser={registerUser} />} */}
       <Footer />
 
     </div>

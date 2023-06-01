@@ -26,9 +26,7 @@ export default function SignUp(props) {
       cnic: Yup.mixed().required("Required.")
     }),
     onSubmit: values => {
-      console.log(values);
       props.registerUser(values)
-
     },
   });
 
