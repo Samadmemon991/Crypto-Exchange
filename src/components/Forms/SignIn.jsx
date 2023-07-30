@@ -48,7 +48,7 @@ export default function SignIn(props) {
 
   return (
     <>
-      <Card title={"Welcome back!"}>
+      <Card title={"Welcome back!"}  maxWidth={"50%"}>
         <Form className="text-dark" onSubmit={validate}>
           <Stack>
             <Form.Group>

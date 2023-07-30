@@ -31,7 +31,7 @@ export default function SignUp(props) {
   });
 
   return (
-    <Card title={"Register"}>
+    <Card title={"Register"} maxWidth={"50%"}>
       <Form onSubmit={formik.handleSubmit}>
         <Stack gap={2}>
           <Form.Group controlId="name">
