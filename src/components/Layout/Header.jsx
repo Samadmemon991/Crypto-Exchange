@@ -5,7 +5,7 @@ export default function Header(props) {
   const userLoggedIn =
     <>
       <NavLink className="btn btn-outline-primary" style={{ marginRight: "1em" }} to="/dashboard" >Dashboard</NavLink>
-      <button class="btn btn-outline-secondary" >Logout</button>
+      <button className="btn btn-outline-secondary" >Logout</button>
     </>
   return (
     <Navbar bg="dark" variant="dark">
