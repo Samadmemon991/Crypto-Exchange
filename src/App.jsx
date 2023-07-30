@@ -8,6 +8,9 @@ import SignIn from './components/Forms/SignIn';
 import { useState } from 'react';
 import Blogs from './components/Blogs/Blogs';
 import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from './components/Redux/store';
+import Dashboard from './components/Dashboard/Dashboard';
 
 
 function App() {
@@ -47,18 +50,20 @@ function App() {
   }
 
   return (
-    < div className="App">
-      <Header isUserLoggedIn={userLoginFlag} />
-      <Routes>
-        <Route path='blogs' element={<Blogs />} />
-        <Route path='/' element={<SignUp registerUser={registerUser} />} />
-        <Route path='sign-in' element={
-          <SignIn users={users} failedAttempt={failedAttempt} setUserLoginFlag={setUserLoginFlag} />
-        } />
-      </Routes>
-      <Footer />
-
-    </div>
+    <Provider store={store}>
+      < div className="App">
+        <Header isUserLoggedIn={userLoginFlag} />
+        <Routes>
+          <Route path='dashboard' element={<Dashboard />} />
+          <Route path='blogs' element={<Blogs />} />
+          <Route path='/' element={<SignUp registerUser={registerUser} />} />
+          <Route path='sign-in' element={
+            <SignIn users={users} failedAttempt={failedAttempt} setUserLoginFlag={setUserLoginFlag} />
+          } />
+        </Routes>
+        <Footer />
+      </div>
+    </Provider>
   );
 }
 

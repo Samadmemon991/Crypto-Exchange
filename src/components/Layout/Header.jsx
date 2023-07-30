@@ -4,7 +4,7 @@ import {  NavLink } from 'react-router-dom';
 export default function Header(props) {
   const userLoggedIn =
     <>
-      <button class="btn btn-outline-primary" style={{ marginRight: "1em" }}>Dashboard</button>
+      <NavLink className="btn btn-outline-primary" style={{ marginRight: "1em" }} to="/dashboard" >Dashboard</NavLink>
       <button class="btn btn-outline-secondary" >Logout</button>
     </>
   return (
