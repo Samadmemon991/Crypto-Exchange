@@ -58,7 +58,7 @@ const Dashboard = () => {
                 <StyledTableCell>Coin</StyledTableCell>
                 <StyledTableCell>Live Rate (USD)</StyledTableCell>
                 <StyledTableCell>Coins Quantity</StyledTableCell>
-                <StyledTableCell>Total Worth</StyledTableCell>
+                  <StyledTableCell>Total Worth (USD)</StyledTableCell>
                 <StyledTableCell>Transfer</StyledTableCell>
               </TableRow>
             </TableHead>

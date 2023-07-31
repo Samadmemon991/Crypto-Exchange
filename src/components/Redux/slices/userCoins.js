@@ -7,16 +7,6 @@ const initialState = {
         "BTC": 0.5,
         "LTC": 2.3,
         "ETH": 5.1
-    },
-    User2: {
-        "BTC": 1.2,
-        "LTC": 0.8,
-        "ETH": 3.7
-    },
-    "User3": {
-        "BTC": 0.7,
-        "LTC": 1.5,
-        "ETH": 2.9
     }
 }
 
@@ -25,8 +15,10 @@ const userCoinsSlice = createSlice({
     initialState,
     reducers: {
         updateUserCoins: (state, action) => {
-            const { user, currency, value } = action.payload;
-            state[user][currency] = value;
+            const { user, currency } = action.payload;
+            if (state[user]) {
+                delete state[user][currency];
+            }
         },
     },
 });

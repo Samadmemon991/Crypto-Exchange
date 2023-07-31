@@ -36,8 +36,11 @@ export default function SignIn(props) {
   const setMsgPrompt = (msgType, user = null) => {
     if (msgType === "success") {
       setMsg(<PromptCard class={"primary"} body={"User successfully logged in."} />)
-      setTimeout(() => { props.setUserLoginFlag(true) }, 1500);
-      navigate('/blogs');
+      setTimeout(() => {
+        props.setUserLoginFlag(true);
+        navigate('/blogs');
+      }
+        , 1500);
 
     } else if (msgType === "fail") {
       setMsg(<PromptCard class={"secondary"} body={"Invalid credentials."} />)
@@ -48,7 +51,7 @@ export default function SignIn(props) {
 
   return (
     <>
-      <Card title={"Welcome back!"}  maxWidth={"50%"}>
+      <Card title={"Welcome back!"} maxWidth={"50%"}>
         <Form className="text-dark" onSubmit={validate}>
           <Stack>
             <Form.Group>
