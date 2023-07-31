@@ -3,10 +3,13 @@ import Card from "../Layout/Card";
 import { useState } from "react";
 import PromptCard from "../Layout/PromptCard";
 import { useNavigate } from "react-router";
+import { updateUser } from '../Redux/slices/currentUser'
+import { useDispatch } from 'react-redux';
+
 
 export default function SignIn(props) {
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   const [msg, setMsg] = useState();
 
   const validate = (e) => {
@@ -20,6 +23,7 @@ export default function SignIn(props) {
     } else if (user.failedAttempts >= 3) {
       setMsgPrompt("block", user.name);
     } else if (user.password === e.target.password.value) {
+      dispatch(updateUser(user.name));
       setMsgPrompt("success");
     } else {
       user.failedAttempts++;
@@ -32,8 +36,11 @@ export default function SignIn(props) {
   const setMsgPrompt = (msgType, user = null) => {
     if (msgType === "success") {
       setMsg(<PromptCard class={"primary"} body={"User successfully logged in."} />)
-      setTimeout(()=>{props.setUserLoginFlag(true)},1500);
-      navigate('/blogs');
+      setTimeout(() => {
+        props.setUserLoginFlag(true);
+        navigate('/blogs');
+      }
+        , 1500);
 
     } else if (msgType === "fail") {
       setMsg(<PromptCard class={"secondary"} body={"Invalid credentials."} />)
@@ -44,7 +51,7 @@ export default function SignIn(props) {
 
   return (
     <>
-      <Card title={"Welcome back!"}>
+      <Card title={"Welcome back!"} maxWidth={"50%"}>
         <Form className="text-dark" onSubmit={validate}>
           <Stack>
             <Form.Group>

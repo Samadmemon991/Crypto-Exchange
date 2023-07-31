@@ -1,7 +1,6 @@
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, tableCellClasses } from '@mui/material';
-import { styled } from '@mui/material/styles';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
 import { Container } from 'react-bootstrap';
-import { blueGrey, pink } from '@mui/material/colors';
+import { pink } from '@mui/material/colors';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import EditIcon from '@mui/icons-material/Edit';
@@ -10,6 +9,7 @@ import ViewBlog from './CRUD/ViewBlog';
 import { useState } from 'react';
 import EditBlog from './CRUD/EditBlog';
 import NewBlog from './CRUD/NewBlog';
+import StyledCell from '../Layout/StyledCell';
 
 function createData(
   id,
@@ -27,15 +27,7 @@ const oldRows = [
   createData(4, "‘It’s A Big Deal’—Crypto Suddenly Braced For A Huge China Earthquake After Bitcoin, Ethereum, BNB, XRP, Cardano, Dogecoin, Polygon And Solana Price Swings", "Crypto exchange Binance", "Forbes"),
 ];
 
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
-  [`&.${tableCellClasses.head}`]: {
-    backgroundColor: blueGrey[800],
-    color: theme.palette.common.white,
-  },
-  [`&.${tableCellClasses.body}`]: {
-    fontSize: 14,
-  },
-}));
+const StyledTableCell = StyledCell;
 
 export default function Blogs() {
   const [rows, setRows] = useState(oldRows);
@@ -93,7 +85,7 @@ export default function Blogs() {
                 <TableCell align="center">
                   {row.id}
                 </TableCell>
-                <TableCell style={{maxWidth:"450px"}} align="left">{row.title}</TableCell>
+                <TableCell style={{ maxWidth: "450px" }} align="left">{row.title}</TableCell>
                 <TableCell style={{ maxWidth: "100px" }} align="left">{row.subtitle}</TableCell>
                 <TableCell align="left">{row.author}</TableCell>
                 <TableCell align="center">
