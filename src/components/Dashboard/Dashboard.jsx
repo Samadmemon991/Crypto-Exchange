@@ -6,6 +6,8 @@ import { fetchCoinData } from "../Redux/slices/globalCoins";
 import StyledCell from '../Layout/StyledCell';
 import Card from '../Layout/Card';
 import PromptCard from '../Layout/PromptCard';
+import {  useNavigate } from 'react-router-dom';
+
 
 const Dashboard = () => {
 
@@ -15,6 +17,7 @@ const Dashboard = () => {
   const loading = useSelector((state) => state.globalCoinDataReducer.loading);
   const error = useSelector((state) => state.globalCoinDataReducer.error);
   const dispatch = useDispatch();
+  const navigate = useNavigate()
 
   useEffect(() => {
     dispatch(fetchCoinData());
@@ -36,8 +39,11 @@ const Dashboard = () => {
   const handleTransfer = (coin, user, coinSymbol) => {
     // Implement the transfer functionality here
     // console.log(`Transferring ${coin.name_full}`);
-    console.log(user);
-    console.log(coinSymbol);
+    navigate(`/transfer?user=${user}&coinSymbol=${coinSymbol}`, { coin });
+
+    // console.log(coin);
+    // console.log(user);
+    // console.log(coinSymbol);
   };
 
   const StyledTableCell = StyledCell;

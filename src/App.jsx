@@ -11,6 +11,7 @@ import { Route, Routes, useNavigate } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './components/Redux/store';
 import Dashboard from './components/Dashboard/Dashboard';
+import TransferForm from './components/Forms/TransferForm';
 
 
 function App() {
@@ -55,6 +56,7 @@ function App() {
         <Header isUserLoggedIn={userLoginFlag} />
         <Routes>
           <Route path='dashboard' element={<Dashboard />} />
+          <Route path='transfer' element={<TransferForm />} />
           <Route path='blogs' element={<Blogs />} />
           <Route path='/' element={<SignUp registerUser={registerUser} />} />
           <Route path='sign-in' element={
