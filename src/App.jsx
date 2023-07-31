@@ -10,6 +10,7 @@ import Blogs from './components/Blogs/Blogs';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import Dashboard from './components/Dashboard/Dashboard';
 import TransferForm from './components/Forms/TransferForm';
+import ProtectedRoute from './ProtectedRoute';
 
 
 function App() {
@@ -50,19 +51,31 @@ function App() {
 
   return (
 
-      < div className="App">
-        <Header isUserLoggedIn={userLoginFlag} />
-        <Routes>
-          <Route path='dashboard' element={<Dashboard />} />
-          <Route path='transfer' element={<TransferForm />} />
-          <Route path='blogs' element={<Blogs />} />
-          <Route path='/' element={<SignUp registerUser={registerUser} />} />
-          <Route path='sign-in' element={
-            <SignIn users={users} failedAttempt={failedAttempt} setUserLoginFlag={setUserLoginFlag} />
-          } />
-        </Routes>
-        <Footer />
-      </div>
+    < div className="App">
+      <Header isUserLoggedIn={userLoginFlag} />
+      <Routes>
+        <Route path='dashboard' element={
+          <ProtectedRoute isAllowed={userLoginFlag}>
+            <Dashboard />
+          </ProtectedRoute>
+        } />
+        <Route path='transfer' element={
+          <ProtectedRoute isAllowed={userLoginFlag}>
+            <TransferForm />
+          </ProtectedRoute>
+        } />
+        <Route path='blogs' element={
+          <ProtectedRoute isAllowed={userLoginFlag}>
+            <Blogs />
+          </ProtectedRoute>
+        } />
+        <Route path='/' element={<SignUp registerUser={registerUser} />} />
+        <Route path='sign-in' element={
+          <SignIn users={users} failedAttempt={failedAttempt} setUserLoginFlag={setUserLoginFlag} />
+        } />
+      </Routes>
+      <Footer />
+    </div>
 
   );
 }
