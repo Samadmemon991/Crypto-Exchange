@@ -13,7 +13,7 @@ const TransferForm = () => {
   const [msg, setMsg] = useState();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
+  // eslint-disable-next-line
   const [searchParams, setSearchParams] = useSearchParams();
   const user = searchParams.get("user");
   let coinSymbol = searchParams.get("coinSymbol");
