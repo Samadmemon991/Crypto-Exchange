@@ -21,7 +21,7 @@ const TransferForm = () => {
     // Your transfer logic here...
     console.log('Transfer initiated.');
     setMsg(<PromptCard class={"primary"} body={"Coins transferred."} />)
-    setTimeout(() => { navigate('/dashboard'); }, 100);
+    setTimeout(() => { navigate('/dashboard'); }, 1500);
 
     // Assuming transfer is successful, redirect the user to the dashboard
   };
@@ -45,8 +45,6 @@ const TransferForm = () => {
 
     return (
       <div>
-        <h2>Transfer {coin.name_full}</h2>
-
         <>
           <Card title={`Transfer ${coin.name_full}`} maxWidth={"50%"}>
             <Form className="text-dark" onSubmit={handleTransfer}>

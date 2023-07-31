@@ -8,8 +8,6 @@ import SignIn from './components/Forms/SignIn';
 import { useState } from 'react';
 import Blogs from './components/Blogs/Blogs';
 import { Route, Routes, useNavigate } from 'react-router-dom';
-import { Provider } from 'react-redux';
-import store from './components/Redux/store';
 import Dashboard from './components/Dashboard/Dashboard';
 import TransferForm from './components/Forms/TransferForm';
 
@@ -51,7 +49,7 @@ function App() {
   }
 
   return (
-    <Provider store={store}>
+
       < div className="App">
         <Header isUserLoggedIn={userLoginFlag} />
         <Routes>
@@ -65,7 +63,7 @@ function App() {
         </Routes>
         <Footer />
       </div>
-    </Provider>
+
   );
 }
 
