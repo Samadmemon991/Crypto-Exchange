@@ -33,3 +33,9 @@ You may also see any lint errors in the console.
 ![Create blog](/media/Screenshot%20(374).png "Create blog")
 ![Create blog](/media/Screenshot%20(375).png "Create blog")
 
+## Dashboard page
+![Loading user coins](/media/Screenshot%20(24).png "Loading user coins")
+![Live user coins](/media/Screenshot%20(25).png "Live user coins")
+## Coin Transfer page
+![Coin Transfer page](/media/Screenshot%20(26).png "Coin Transfer page")
+![Coins Transferred](/media/Screenshot%20(27).png "Coins Transferred")
