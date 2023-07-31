@@ -37,14 +37,8 @@ const Dashboard = () => {
   }
 
   const handleTransfer = (coin, user, coinSymbol) => {
-    // Implement the transfer functionality here
-    // console.log(`Transferring ${coin.name_full}`);
     navigate(`/transfer?user=${user}&coinSymbol=${coinSymbol}`, { coin });
-
-    // console.log(coin);
-    // console.log(user);
-    // console.log(coinSymbol);
-  };
+ };
 
   const StyledTableCell = StyledCell;
   if (coinData) {

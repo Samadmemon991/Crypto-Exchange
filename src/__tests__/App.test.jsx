@@ -10,7 +10,6 @@ describe('App Component', () => {
         </BrowserRouter>
         );
 
-        // const homeLinkElement = screen.getByRole(/Home/i);
         const homeLinkElement = screen.getByRole('link', { name: /home/i });
         expect(homeLinkElement).toHaveAttribute('href', '/');
         expect(homeLinkElement).toBeInTheDocument();
